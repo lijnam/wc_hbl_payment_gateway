@@ -310,9 +310,17 @@ function fun2c2p_init()
                 $demo = '';
             }
             //END--test_mode=yes
+            $mastercard_img = plugin_dir_url(__FILE__) . 'assets/img/mc_acc.svg';
+            $visa_img = plugin_dir_url(__FILE__) . 'assets/img/visa_pos_fc.png';
+            $safekey_img = plugin_dir_url(__FILE__) . 'assets/img/amx_sk_bbl_rm_rgb_45px_pref.png';
+            $payment_brands_img_description = '<div style="height: 50px">';
+            $payment_brands_img_description .= '<img src="' . $mastercard_img . ' " alt="mastercard" style="height: 30px;margin: 10px; float: left; max-height: 30px;" >';
+            $payment_brands_img_description .= '<img src="' . $visa_img . ' " alt="visa" style="height: 30px;margin: 10px; float: left; max-height: 30px;" >';
+            $payment_brands_img_description .= '<img src="' . $safekey_img . ' " alt="safekey" style="height: 30px;margin: 10px; float: left; max-height: 30px;" >';
+            $payment_brands_img_description .= '</div>';
 
             $this->title = $this->settings['title'] . $test_title; // Title as displayed on Frontend
-            $this->description = $this->settings['description'] . $test_description; // Description as displayed on Frontend
+            $this->description = $this->settings['description'] . $test_description . $payment_brands_img_description; // Description as displayed on Frontend
             //$this->liveurl          = 'https://' . $this->settings['test_mode'] . '.2c2p.com/' . $demo . 'RedirectV3/payment';
             $this->liveurl = 'https://hblpgw.2c2p.com/HBLPGW/Payment/Payment/Payment';
             $this->service_provider = array_key_exists('service_provider', $this->settings) ? $this->settings['service_provider'] : "";
@@ -320,7 +328,7 @@ function fun2c2p_init()
             $this->msg['class'] = '';
 
             add_action('init', array(&$this, 'check_2c2p_response'));
-            add_action('woocommerce_api_wchblgateway' , array($this, 'check_2c2p_response')); //update for woocommerce >2.0
+            add_action('woocommerce_api_wchblgateway', array($this, 'check_2c2p_response')); //update for woocommerce >2.0
             add_action('woocommerce_receipt_2c2p', array(&$this, 'receipt_page'));
             add_action('woocommerce_checkout_update_order_meta', array(&$this, 'wc_2c2p_custom_checkout_field_update_order_meta'));
 
