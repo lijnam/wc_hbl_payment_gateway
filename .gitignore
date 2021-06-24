@@ -1,6 +1,7 @@
-.idea
-.phpcs.cache
-*.zip
-
 /node_modules/
 /vendor/
+/build/
+.DS_Store
+.phpcs.cache
+*.zip
+.idea
