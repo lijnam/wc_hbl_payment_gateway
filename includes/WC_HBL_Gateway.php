@@ -8,6 +8,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway
 {
 
 	public function __construct() {
+
 		$this->id = "hbl_gateway";
 		$this->has_fields = false;
 		$this->method_title = "Payment Gateway From Himalayan Bank";
