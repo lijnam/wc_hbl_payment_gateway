@@ -1,5 +1,4 @@
-<?php get_header(); ?>
-
+<?php get_header(); //phpcs:ignore Internal.LineEndings.Mixed ?>
 
 <style>
 		body{
@@ -40,46 +39,46 @@
 			fill:#e58900;
 		}
 		p.response {
-			    font-size: 60px;
-			    margin-bottom: 30px;
-			    font-weight: bold;
+				font-size: 60px;
+				margin-bottom: 30px;
+				font-weight: bold;
 			}
 			.btn {
-			    display: inline-block;
-			    text-decoration: none;
-			    transition: .4s;
+				display: inline-block;
+				text-decoration: none;
+				transition: .4s;
 			}
 			.btn-success {
-			    background: #4caf50;
-			    color: #fff;
-			    margin-bottom: 30px;
-			    padding: 15px 35px;
-			    box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
-			    text-transform: uppercase;
+				background: #4caf50;
+				color: #fff;
+				margin-bottom: 30px;
+				padding: 15px 35px;
+				box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+				text-transform: uppercase;
 			}
 			.btn-success:hover{
 				background: #348f38;
 				box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 			}
 			.btn-error {
-			    background: #e50000;
-			    color: #fff;
-			    margin-bottom: 30px;
-			    padding: 15px 35px;
-			    box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
-			    text-transform: uppercase;
+				background: #e50000;
+				color: #fff;
+				margin-bottom: 30px;
+				padding: 15px 35px;
+				box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+				text-transform: uppercase;
 			}
 			.btn-error:hover{
 				background: #b40303;
 				box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
 			}
 			.btn-warn {
-			    background: #e58900;
-			    color: #fff;
-			    margin-bottom: 30px;
-			    padding: 15px 35px;
-			    box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
-			    text-transform: uppercase;
+				background: #e58900;
+				color: #fff;
+				margin-bottom: 30px;
+				padding: 15px 35px;
+				box-shadow: 2px 2px 12px rgba(0,0,0,0.3);
+				text-transform: uppercase;
 			}
 			.btn-warn:hover{
 				background: #d17d00;
@@ -137,15 +136,15 @@
 			</svg>
 		</div>
 		<div class="msg">
-			<p class="response">Declined !</p>
-			<p class="desc">Sorry the payment was declined. Please try again later.</p>
-			<?php if( isset( $_REQUEST['invoiceNo'] ) ) :?>
-				<p class="desc">You Order Id is: <?php echo $_REQUEST['invoiceNo']; ?></p>
-				<p class="desc">Please save this number so that we can verify it later.</p>
+			<p class="response"><?php esc_html_e( 'Declined !', 'hbl-payment-for-woocommerce' ); ?></p>
+			<p class="desc"><?php esc_html_e( 'Sorry the payment was declined. Please try again later.', 'hbl-payment-for-woocommerce' ); ?></p>
+			<?php if ( isset( $_REQUEST['invoiceNo'] ) ) : //phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
+				<p class="desc">You Order Id is: <?php echo $_REQUEST['invoiceNo']; //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="desc"><?php esc_html_e( 'Please save this number so that we can verify it later.', 'hbl-payment-for-woocommerce' ); ?></p>
 			<?php endif; ?>
 		</div>
 		<div class="btn-sec">
-			<a href="<?php echo get_site_url() ?>" class="btn btn-back"><span>&larr;</span>Back to home</a>
+			<a href="<?php echo esc_url( get_site_url() ); ?>" class="btn btn-back"><span>&larr;</span>Back to home</a>
 		</div>
 	</section>
 

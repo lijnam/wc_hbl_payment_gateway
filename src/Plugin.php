@@ -90,11 +90,11 @@ final class Plugin {
 
 			if ( isset( $_REQUEST['paymentGatewayID'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-				$logger = wc_get_logger();
+				$logger = \wc_get_logger();
 				$logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) ); //phpcs:ignore WordPress.WP.AlternativeFunctions.json_encode_json_encode, WordPress.Security.NonceVerification.Recommended
-				$order = wc_get_order( $_REQUEST['invoiceNo'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$order = \wc_get_order( $_REQUEST['invoiceNo'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
-				if ( null !== $order ) {
+				if ( ! empty( $order ) ) {
 
 					if ( 'AP' === $_REQUEST['Status'] || 'RS' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 						$order->payment_complete();
