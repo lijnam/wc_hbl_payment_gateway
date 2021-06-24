@@ -33,7 +33,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 		$payment_brands_img_description .= '<p style="margin: 5px auto;font-size: 14px;display: block;width: fit-content;">POWERED BY :</p> <img src="' . $hbl_img . ' " alt="hbl" style="height: 36px;margin: 10px auto 10px auto; float:none; max-height: 36px;" >';
 		$payment_brands_img_description .= '</div>';
 
-		$this->description               = $this->get_option( 'description' ) . $payment_brands_img_description;
+		$this->description = $this->get_option( 'description' ) . $payment_brands_img_description;
 		$this->init_form_fields();
 		$this->init_settings();
 		$this->title = $this->get_option( 'title' );
