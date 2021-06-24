@@ -41,7 +41,7 @@ final class Plugin {
 
 		// Load plugin text domain.
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-		add_filter( 'woocommerce_payment_gateways', [ $this, 'add_wc_hbl_gateway_class' ] );
+		add_filter( 'woocommerce_payment_gateways', array( $this, 'add_wc_hbl_gateway_class' ) );
 		add_action( 'template_redirect', array( $this, 'response_handler' ) );
 	}
 
@@ -63,13 +63,12 @@ final class Plugin {
 
 	/**
 	 * Add the gateway to WC Available Gateways
-	 * 
+	 *
 	 * @param array $methods Methods.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @return array Methods including WC_HBL_Gateway.
-	 * 
 	 */
 	public function add_wc_hbl_gateway_class( $methods ) {
 		$methods[] = 'WC_HBL_Gateway';
@@ -79,149 +78,147 @@ final class Plugin {
 
 	/**
 	 * Use to redirect the page after payment process is completed.
-	 * 
+	 *
 	 * @since 1.0.0
 	 */
 	public function response_handler() {
 
 		global $woocommerce, $wp;
-		$url = home_url($wp->request);
-		
-		if( $url == get_site_url() . '/checkout/order-received') {
+		$url = home_url( $wp->request );
 
-			if( isset( $_REQUEST['paymentGatewayID'] ) ) {
+		if ( $url == get_site_url() . '/checkout/order-received' ) {
 
-	            $logger = wc_get_logger();
-	            $logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) );
+			if ( isset( $_REQUEST['paymentGatewayID'] ) ) {
+
+				$logger = wc_get_logger();
+				$logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) );
 				$order = wc_get_order( $_REQUEST['invoiceNo'] );
 
-	            if( $order != null ) {
+				if ( $order != null ) {
 
-	                if( $_REQUEST['Status'] == 'AP' || $_REQUEST['Status'] == 'RS' ) {
-	                    $order->payment_complete();
-	                    $order->reduce_order_stock();
-	                    $woocommerce->cart->empty_cart();
-	                    $order->add_order_note( 'Hey, your order is paid! Thank you!', true );
-	                    $url = $order->get_checkout_order_received_url();
-	                    wp_safe_redirect( $url );
-	                    exit;
+					if ( $_REQUEST['Status'] == 'AP' || $_REQUEST['Status'] == 'RS' ) {
+						$order->payment_complete();
+						$order->reduce_order_stock();
+						$woocommerce->cart->empty_cart();
+						$order->add_order_note( 'Hey, your order is paid! Thank you!', true );
+						$url = $order->get_checkout_order_received_url();
+						wp_safe_redirect( $url );
+						exit;
 
-	                } elseif( $_REQUEST['Status'] == 'VO' ) {
-	                    $status = $this->status_verification( $_REQUEST['Status'] );
-	                    $order->add_order_note( 'Transaction has been canceled by the user', false );
-	                    $order->update_status( 'cancelled' );
-	                    add_filter( 'template_include', [ $this, 'redirect_html_to_plugin_page' ] );
+					} elseif ( $_REQUEST['Status'] == 'VO' ) {
+						$status = $this->status_verification( $_REQUEST['Status'] );
+						$order->add_order_note( 'Transaction has been canceled by the user', false );
+						$order->update_status( 'cancelled' );
+						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
 
-	                } else {
-	                    $status = $this->status_verification( $_REQUEST['Status'] );
-	                    $order->add_order_note( 'Oops! Your transaction has failed. Due to : ' . $status, false );
-	                    $order->update_status( 'failed' );
-	                    add_filter( 'template_include', [ $this, 'redirect_html_to_plugin_page' ] );
-	                }
-
-	            }
-
+					} else {
+						$status = $this->status_verification( $_REQUEST['Status'] );
+						$order->add_order_note( 'Oops! Your transaction has failed. Due to : ' . $status, false );
+						$order->update_status( 'failed' );
+						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
+					}//end if
+				}//end if
 			} else {
 				status_header( 404 );
-		        nocache_headers();
-		        include( get_query_template( '404' ) );
-		        exit;
-			}
-		}
+				nocache_headers();
+				include get_query_template( '404' );
+				exit;
+			}//end if
+		}//end if
 	}
 
 	/**
 	 * Status Verification
 	 *
 	 * @since 1.0.0
-	 * 
+	 *
 	 * @return string verification status.
 	 */
 	public function status_verification( $status = '' ) {
 
 		switch ( $status ) {
-		case 'AP':
-            $status_text = 'Approved(Paid)';
-        break;
+			case 'AP':
+				$status_text = 'Approved(Paid)';
+				break;
 
-        case 'SE':
-            $status_text = 'Settled';
-        break;
+			case 'SE':
+				$status_text = 'Settled';
+				break;
 
-        case 'VO':
-            $status_text = 'Voided (Canceled)';
-        break;
+			case 'VO':
+				$status_text = 'Voided (Canceled)';
+				break;
 
-        case 'DE':
-            $status_text = 'Declined by the issuer Host';
-        break;
+			case 'DE':
+				$status_text = 'Declined by the issuer Host';
+				break;
 
-        case 'FA':
-            $status_text = 'Failed';
-        break;
+			case 'FA':
+				$status_text = 'Failed';
+				break;
 
-        case 'PE':
-            $status_text = 'Pending';
-        break;
+			case 'PE':
+				$status_text = 'Pending';
+				break;
 
-        case 'EX':
-            $status_text = 'Expired';
-        break;
+			case 'EX':
+				$status_text = 'Expired';
+				break;
 
-        case 'RE':
-            $status_text = 'Refunded';
-        break;
+			case 'RE':
+				$status_text = 'Refunded';
+				break;
 
-        case 'RS':
-            $status_text = 'Ready to Settle';
-        break;
+			case 'RS':
+				$status_text = 'Ready to Settle';
+				break;
 
-        case 'AU':
-            $status_text = 'Authenticated';
-        break;
+			case 'AU':
+				$status_text = 'Authenticated';
+				break;
 
-        case 'IN':
-            $status_text = 'Initiated';
-        break;
+			case 'IN':
+				$status_text = 'Initiated';
+				break;
 
-        case 'FP':
-            $status_text = 'Fraud Passed';
-        break;
+			case 'FP':
+				$status_text = 'Fraud Passed';
+				break;
 
-        case 'PA':
-            $status_text = 'Paid (Cash)';
-        break;
+			case 'PA':
+				$status_text = 'Paid (Cash)';
+				break;
 
-        case 'MA':
-            $status_text = 'Matched (Cash)';
-        break;
+			case 'MA':
+				$status_text = 'Matched (Cash)';
+				break;
 
-        default:
-            $status_text = 'No Data From HBL';
-        break;
-	}
+			default:
+				$status_text = 'No Data From HBL';
+				break;
+		}//end switch
 
 		return $status_text;
 	}
 
 	/**
 	 * Redirect HTML to plugin page.
-	 * 
+	 *
 	 * @param  string $template Template path.
-	 * 
+	 *
 	 * @return string Template Path.
 	 */
 	public function redirect_html_to_plugin_page( $template ) {
 		global $wp;
 
-		if( $_REQUEST['Status'] == 'VO' ) {
-			$new_template =  HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/canceled.php';
-	        return $new_template;
+		if ( $_REQUEST['Status'] == 'VO' ) {
+			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/canceled.php';
+			return $new_template;
 		} else {
-			$new_template =  HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/declined.php';
-	        return $new_template;
+			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/declined.php';
+			return $new_template;
 		}
-	
+
 		return $template;
 	}
 }

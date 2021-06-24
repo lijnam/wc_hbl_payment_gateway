@@ -1,1 +1,6 @@
 .idea
+.phpcs.cache
+*.zip
+
+/node_modules/
+/vendor/
