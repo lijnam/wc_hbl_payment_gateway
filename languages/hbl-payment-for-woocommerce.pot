@@ -1,0 +1,70 @@
+# Copyright (C) 2021 Manjil
+# This file is distributed under the same license as the Himalayan Bank Payment Gateway for Woocommerce package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Himalayan Bank Payment Gateway for Woocommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-24 14:05:19+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"X-Generator: grunt-wp-i18n 1.0.3\n"
+
+#: includes/WC_HBL_Gateway.php:44
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:46
+msgid "Enable Himalayan Bank Payment"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:51
+msgid "Title"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:53
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:54
+msgid "Himalayan Pay"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:58
+msgid "Description"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:60
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:61
+msgid "Pay with your credit card via our super-cool payment gateway"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:114
+msgid "Awaiting Card payment"
+msgstr ""
+
+#: includes/WC_HBL_Gateway.php:123
+msgid "Please Wait you have been redirected to bank payment site."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Himalayan Bank Payment Gateway for Woocommerce"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/lijnam/wc_hbl_payment_gateway"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Payment Gateway for Himalayan Bank."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Manjil"
+msgstr ""
