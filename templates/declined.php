@@ -139,7 +139,7 @@
 			<p class="response"><?php esc_html_e( 'Declined !', 'hbl-payment-for-woocommerce' ); ?></p>
 			<p class="desc"><?php esc_html_e( 'Sorry the payment was declined. Please try again later.', 'hbl-payment-for-woocommerce' ); ?></p>
 			<?php if ( isset( $_REQUEST['invoiceNo'] ) ) : //phpcs:ignore WordPress.Security.NonceVerification.Recommended ?>
-				<p class="desc">You Order Id is: <?php echo $_REQUEST['invoiceNo']; //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
+				<p class="desc">You Order Id is: <?php echo absint( $_REQUEST['invoiceNo'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended ?></p>
 				<p class="desc"><?php esc_html_e( 'Please save this number so that we can verify it later.', 'hbl-payment-for-woocommerce' ); ?></p>
 			<?php endif; ?>
 		</div>
