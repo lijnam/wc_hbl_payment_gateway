@@ -91,12 +91,12 @@ final class Plugin {
 			if ( isset( $_REQUEST['paymentGatewayID'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				$logger = \wc_get_logger();
-				$logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) ); //phpcs:ignore
-				$order = \wc_get_order( $_REQUEST['invoiceNo'] ); //phpcs:ignore
+				$logger->debug( 'Response From Bank ', wp_json_encode( array_map( 'wp_unslash', (array) $_REQUEST ) ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				$order = isset( $_REQUEST['invoiceNo'] ) ? \wc_get_order( absint( $_REQUEST['invoiceNo'] ) ) : false; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				if ( ! empty( $order ) ) {
 
-					if ( 'AP' === $_REQUEST['Status'] || 'RS' === $_REQUEST['Status'] ) { //phpcs:ignore
+					if ( isset( $_REQUEST['Status'] ) && in_array( $_REQUEST['Status'], array( 'AP', 'RS' ), true ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 						$order->payment_complete();
 						$order->reduce_order_stock();
@@ -106,15 +106,15 @@ final class Plugin {
 						wp_safe_redirect( $url );
 						exit;
 
-					} elseif ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore
+					} elseif ( isset( $_REQUEST['Status'] ) && 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
-						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore
+						$status = $this->status_verification( sanitize_text_field( wp_unslash( $_REQUEST['Status'] ) ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						$order->add_order_note( 'Transaction has been canceled by the user', false );
 						$order->update_status( 'cancelled' );
 						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
 
 					} else {
-						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore
+						$status = $this->status_verification( sanitize_text_field( wp_unslash( $_REQUEST['Status'] ) ) ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						$order->add_order_note( 'Oops! Your transaction has failed. Due to : ' . $status, false );
 						$order->update_status( 'failed' );
 						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
@@ -215,7 +215,7 @@ final class Plugin {
 	public function redirect_html_to_plugin_page( $template ) {
 		global $wp;
 
-		if ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore
+		if ( isset( $_REQUEST['Status'] ) && 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/canceled.php';
 			return $new_template;
 		} else {
