@@ -30,6 +30,11 @@ add_action(
 	'plugins_loaded',
 	function() {
 
+		// Return if WooCommerce is not installed.
+		if ( ! defined( 'WC_VERSION' ) ) {
+			return;
+		}
+
 		require_once __DIR__ . '/includes/class-wc-hbl-payment-gateway.php';
 	}
 );

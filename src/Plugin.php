@@ -91,12 +91,13 @@ final class Plugin {
 			if ( isset( $_REQUEST['paymentGatewayID'] ) ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
 				$logger = \wc_get_logger();
-				$logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) ); //phpcs:ignore WordPress.WP.AlternativeFunctions.json_encode_json_encode, WordPress.Security.NonceVerification.Recommended
-				$order = \wc_get_order( $_REQUEST['invoiceNo'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$logger->debug( 'Response From Bank ', json_encode( $_REQUEST ) ); //phpcs:ignore
+				$order = \wc_get_order( $_REQUEST['invoiceNo'] ); //phpcs:ignore
 
 				if ( ! empty( $order ) ) {
 
-					if ( 'AP' === $_REQUEST['Status'] || 'RS' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+					if ( 'AP' === $_REQUEST['Status'] || 'RS' === $_REQUEST['Status'] ) { //phpcs:ignore
+
 						$order->payment_complete();
 						$order->reduce_order_stock();
 						$woocommerce->cart->empty_cart();
@@ -105,14 +106,15 @@ final class Plugin {
 						wp_safe_redirect( $url );
 						exit;
 
-					} elseif ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+					} elseif ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore
+
+						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore
 						$order->add_order_note( 'Transaction has been canceled by the user', false );
 						$order->update_status( 'cancelled' );
 						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
 
 					} else {
-						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+						$status = $this->status_verification( $_REQUEST['Status'] ); //phpcs:ignore
 						$order->add_order_note( 'Oops! Your transaction has failed. Due to : ' . $status, false );
 						$order->update_status( 'failed' );
 						add_filter( 'template_include', array( $this, 'redirect_html_to_plugin_page' ) );
@@ -130,7 +132,7 @@ final class Plugin {
 	/**
 	 * Status Verification
 	 *
-	 * @param string Status.
+	 * @param string $status Status.
 	 *
 	 * @since 1.0.0
 	 *
@@ -213,7 +215,7 @@ final class Plugin {
 	public function redirect_html_to_plugin_page( $template ) {
 		global $wp;
 
-		if ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotValidated, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		if ( 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore
 			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . 'templates/canceled.php';
 			return $new_template;
 		} else {

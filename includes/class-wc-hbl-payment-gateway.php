@@ -205,9 +205,9 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 	 */
 	public function convert_amount( $amount = '' ) {
 		if ( ! empty( $amount ) ) {
-				$amount     = $amount * 100;
-				$new_amount = str_pad( $amount, 12, 0, STR_PAD_LEFT );
-				return $new_amount;
+			$amount     = $amount * 100;
+			$new_amount = str_pad( $amount, 12, 0, STR_PAD_LEFT );
+			return $new_amount;
 		}
 
 		return esc_html__( 'Amount Field Was Empty', 'hbl-payment-for-woocommerce' );
