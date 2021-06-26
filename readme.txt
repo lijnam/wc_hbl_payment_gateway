@@ -32,5 +32,5 @@ No Questions Yet.
 
 == Changelog ==
 
-= 1.0.0 - xx/xx/2020 =
+= 1.0.0 - 06/26/2020 =
 * Initial Release
