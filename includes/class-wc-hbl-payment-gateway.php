@@ -50,7 +50,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 	public function init_form_fields() {
 		$this->form_fields = array(
 			'enabled'         => array(
-				'title'   => esc_html__( 'Enable/Disable', 'hbl-payment-for-woocommerce' ),
+				'title'   => esc_html__( 'Enable', 'hbl-payment-for-woocommerce' ),
 				'type'    => 'checkbox',
 				'label'   => esc_html__( 'Enable Himalayan Bank Payment', 'hbl-payment-for-woocommerce' ),
 				'default' => 'yes',
@@ -67,7 +67,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 				'title'       => esc_html__( 'Description', 'hbl-payment-for-woocommerce' ),
 				'type'        => 'textarea',
 				'description' => esc_html__( 'This controls the description which the user sees during checkout.', 'hbl-payment-for-woocommerce' ),
-				'default'     => esc_html__( 'Pay with your credit card via our super-cool payment gateway', 'hbl-payment-for-woocommerce' ),
+				'default'     => esc_html__( 'Pay with your credit card via our super-cool payment gateway.', 'hbl-payment-for-woocommerce' ),
 			),
 
 			'testmode'        => array(
@@ -80,7 +80,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 			),
 
 			'test_api_key'    => array(
-				'title'       => esc_html__( 'Test Merchent Id', 'hbl-payment-for-woocommerce' ),
+				'title'       => esc_html__( 'Test Merchant Id', 'hbl-payment-for-woocommerce' ),
 				'type'        => 'text',
 				'description' => esc_html__( 'Place The Pagment Gateway Test API Key.', 'hbl-payment-for-woocommerce' ),
 				'desc_tip'    => true,
@@ -94,7 +94,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 			),
 
 			'live_api_key'    => array(
-				'title'       => esc_html__( 'Live Merchent Id', 'hbl-payment-for-woocommerce' ),
+				'title'       => esc_html__( 'Live Merchant Id', 'hbl-payment-for-woocommerce' ),
 				'type'        => 'text',
 				'description' => esc_html__( 'Place The Pagment Gateway Live API Key.', 'hbl-payment-for-woocommerce' ),
 				'desc_tip'    => true,

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: HBL Payment For WooCommerce
+ * Plugin Name: Himalayan Bank Payment For WooCommerce
  * Description: Payment Gateway for Himalayan Bank.
  * Author: Manjil
  * Author URI: https://github.com/lijnam/

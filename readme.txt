@@ -1,5 +1,5 @@
 === Himalayan Bank Payment For WooCommerce ===
-Contributors: sanzeeb3
+Contributors: sanzeeb3, lijnam
 Tags: hbl-payment, woocommerce
 Requires at least: 4.9
 Tested up to: 5.7
@@ -16,7 +16,7 @@ Adds Himalayan Bank Payment Gateway for WooCommerce.
 
 Accept the Himalayan Bank payment from your store.
 
-[Himalayan Bank](https://www.himalayanbank.com/) Limited is one of the largest private banks of Nepal. If you do not know about the Himalayan Bank, you probably do not need this plugin.
+[Himalayan Bank Limited](https://www.himalayanbank.com/) is one of the largest private banks of Nepal. If you do not know about the Himalayan Bank, you probably do not need this plugin.
 
 The plugin is developed without any incentive from the Himlayan Bank or WooCommerce.
 
@@ -25,7 +25,6 @@ Contributions of any kind are welcome! Visit our [GitHub repository](https://git
 == Screenshots ==
 
 1. Checkout
-2.
 
 == Frequently Asked Questions ==
 
