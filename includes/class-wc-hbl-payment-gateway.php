@@ -189,9 +189,9 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 		$html .= '<input type="text" id="nonSecure" name="nonSecure" value="N"/>';
 		$html .= '<input type="text" id="hashValue" name="hashValue" value="' . esc_attr( $this->hash_generator( $order->id, $this->convert_amount( $order->get_total() ), $this->currency_to_code_convertor( $order->get_currency() ) ) ) . '"/>';
 		$html .= '</form>';
-//		$html .= '<script type="text/javascript">';
-//		$html .= "document.getElementById('hbl-payment-form').submit();";
-//		$html .= '</script>';
+		$html .= '<script type="text/javascript">';
+		$html .= "document.getElementById('hbl-payment-form').submit();";
+		$html .= '</script>';
 
 		return $html;
 	}
