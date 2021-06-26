@@ -254,7 +254,8 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 
 			$secret_key       = $this->get_option( 'testmode' ) === 'no' ? $this->live_secret_key : $this->test_secret_key;
 			$merchent_id      = $this->get_option( 'testmode' ) === 'no' ? $this->live_api_key : $this->test_api_key;
-			$signature_string = $merchent_id + $order_id + $amount + $currency_code + 'N';
+
+			$signature_string = $merchent_id. $order_id . $amount .$currency_code . 'N';
 			return urlencode( strtoupper( hash_hmac( 'SHA256', $signature_string, $secret_key, false ) ) ); //phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.urlencode_urlencode
 		}
 
