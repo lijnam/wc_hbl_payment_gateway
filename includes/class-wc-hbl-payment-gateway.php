@@ -169,25 +169,27 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 		$token   = null;
 		$name    = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();
 
-		if ( $this->get_option( 'testmode' ) === 'no' ) {
-			$token   = $this->get_option( 'live_api_key' );
+		if ($this->get_option('testmode') === 'no') {
+			$token = $this->get_option('live_api_key');
 			$api_url = 'https://hblpgw.2c2p.com/HBLPGW/Payment/Payment/Payment';
 		} else {
-			$token   = $this->get_option( 'test_api_key' );
+			$token = $this->get_option('test_api_key');
 			$api_url = 'https://uat3ds.2c2p.com/HBLPGW/Payment/Payment/Payment';
 		}
-		$html  = '<form id="hbl-payment-form" method="post" action ="' . esc_url( $api_url ) . '" >';
-		$html .= '<input type="text" id="paymentGatewayID" name="paymentGatewayID" value="' . esc_attr( $token ) . '"/>';
-		$html .= '<input type="text" id="invoiceNo" name="invoiceNo" value="' . absint( $order->id ) . '"/>';
-		$html .= '<input type="text" id="productDesc" name="productDesc" value="' . absint( $order->id ) . '"/>';
-		$html .= '<input type="text" id="amount" name="amount" value="' . esc_attr( $this->convert_amount( $order->get_total() ) ) . '"/>';
-		$html .= '<input type="text" id="currencyCode" name="currencyCode" value="' . esc_attr( $this->currency_to_code_convertor( $order->get_currency() ) ) . '"/>';
-		$html .= '<input type="text" id="userDefined1" name="userDefined1" value="Customer Name: ' . esc_html( $name ) . '"/>';
-		$html .= '<input type="text" id="userDefined2" name="userDefined2" value="Customer email: ' . esc_html( $order->get_billing_email() ) . '"/>';
-		$html .= '<input type="text" id="userDefined3" name="userDefined3" value="Customer Contact: ' . esc_html( $order->get_billing_phone() ) . '"/>';
-		$html .= '<input type="text" id="userDefined5" name="userDefined5" value="UPOP" />';
-		$html .= '<input type="text" id="nonSecure" name="nonSecure" value="N"/>';
-		$html .= '<input type="text" id="hashValue" name="hashValue" value="' . esc_attr( $this->hash_generator( $order->id, $this->convert_amount( $order->get_total() ), $this->currency_to_code_convertor( $order->get_currency() ) ) ) . '"/>';
+		$html = '<form id="hbl-payment-form" method="post" action ="'.esc_url($api_url).'" >';
+		$html .= '<input type="hidden" id="paymentGatewayID" name="paymentGatewayID" value="'.esc_attr($token).'"/>';
+		$html .= '<input type="hidden" id="invoiceNo" name="invoiceNo" value="'.absint($order->id).'"/>';
+		$html .= '<input type="hidden" id="productDesc" name="productDesc" value="'.absint($order->id).'"/>';
+		$html .= '<input type="hidden" id="amount" name="amount" value="'.esc_attr($this->convert_amount($order->get_total())).'"/>';
+		$html .= '<input type="hidden" id="currencyCode" name="currencyCode" value="'.esc_attr($this->currency_to_code_convertor($order->get_currency())).'"/>';
+		$html .= '<input type="hidden" id="userDefined1" name="userDefined1" value="Customer Name: '.esc_html($name).'"/>';
+		$html .= '<input type="hidden" id="userDefined2" name="userDefined2" value="Customer email: '.esc_html($order->get_billing_email()).'"/>';
+		$html .= '<input type="hidden" id="userDefined3" name="userDefined3" value="Customer Contact: '.esc_html($order->get_billing_phone()).'"/>';
+		$html .= '<input type="hidden" id="userDefined5" name="userDefined5" value="UPOP" />';
+		$html .= '<input type="hidden" id="nonSecure" name="nonSecure" value="N"/>';
+		$html .= '<input type="hidden" id="hashValue" name="hashValue" value="'.esc_attr($this->hash_generator($order->id, $this->convert_amount($order->get_total()),
+				$this->currency_to_code_convertor($order->get_currency()))).'"/>';
+		$html .= '<button type="submit">Click here if you are not redirected automatically</button>';
 		$html .= '</form>';
 		$html .= '<script type="text/javascript">';
 		$html .= "document.getElementById('hbl-payment-form').submit();";
