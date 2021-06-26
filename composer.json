@@ -1,0 +1,14 @@
+{
+    "name": "manji/wc_hbl_payment_gateway",
+    "description": "HBL Payment For WooCommerce",
+    "license": "GNU",
+    "authors": [
+        {
+            "name": "Manjil",
+            "email": "mshrst16@gmail.com"
+        }
+    ],
+    "require": {
+        "wp-coding-standards/wpcs": "^2.3"
+    }
+}

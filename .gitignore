@@ -5,3 +5,6 @@
 .phpcs.cache
 *.zip
 .idea
+vendor/*
+wpcs
+/composer.lock
