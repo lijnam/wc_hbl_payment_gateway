@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin constants.
  */
 define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_FILE', __FILE__ );
-define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH', dirname( __FILE__ ) );
+define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH', __DIR__ );
 define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_VERSION', '1.0.0' );
 
 require_once __DIR__ . '/src/Plugin.php';
