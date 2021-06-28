@@ -4,7 +4,7 @@ Tags: hbl-payment, woocommerce
 Requires at least: 4.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -32,5 +32,8 @@ No Questions Yet.
 
 == Changelog ==
 
-= 1.0.0 - 06/26/2020 =
+= 1.0.1 - 06/28/2021 =
+* Fix - redirection after cancelling order
+
+= 1.0.0 - 06/26/2021 =
 * Initial Release

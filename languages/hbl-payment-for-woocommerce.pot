@@ -1,10 +1,10 @@
 # Copyright (C) 2021 Manjil
-# This file is distributed under the same license as the Himalayan Bank Payment Gateway for Woocommerce package.
+# This file is distributed under the same license as the Himalayan Bank Payment For WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Himalayan Bank Payment Gateway for Woocommerce 1.0.0\n"
+"Project-Id-Version: Himalayan Bank Payment For WooCommerce 1.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-24 14:05:19+00:00\n"
+"POT-Creation-Date: 2021-06-28 03:16:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,52 +13,138 @@ msgstr ""
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: includes/WC_HBL_Gateway.php:44
-msgid "Enable/Disable"
+#: includes/class-wc-hbl-payment-gateway.php:18
+msgid "Accept payments via Himalyan Bank Ltd.."
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:46
+#: includes/class-wc-hbl-payment-gateway.php:53
+msgid "Enable"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:55
 msgid "Enable Himalayan Bank Payment"
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:51
+#: includes/class-wc-hbl-payment-gateway.php:60
 msgid "Title"
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:53
+#: includes/class-wc-hbl-payment-gateway.php:62
 msgid "This controls the title which the user sees during checkout."
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:54
+#: includes/class-wc-hbl-payment-gateway.php:63
 msgid "Himalayan Pay"
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:58
+#: includes/class-wc-hbl-payment-gateway.php:67
 msgid "Description"
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:60
+#: includes/class-wc-hbl-payment-gateway.php:69
 msgid "This controls the description which the user sees during checkout."
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:61
-msgid "Pay with your credit card via our super-cool payment gateway"
+#: includes/class-wc-hbl-payment-gateway.php:70
+msgid "Pay with your credit card via our super-cool payment gateway."
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:114
+#: includes/class-wc-hbl-payment-gateway.php:74
+msgid "Test mode"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:75
+msgid "Enable Test Mode"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:77
+msgid "Place the payment gateway in test mode using test API keys."
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:83
+msgid "Test Merchant Id"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:85
+msgid "Place The Pagment Gateway Test API Key."
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:90
+msgid "Test Secret Key"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:92
+msgid ""
+"Place The Pagment Gateway Test Secret Key to encrypt and decrypt then "
+"response."
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:97
+msgid "Live Merchant Id"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:99
+msgid "Place The Pagment Gateway Live API Key."
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:104
+msgid "Live Secret Key"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:106
+msgid ""
+"Place The Pagment Gateway Live Secret Key to encrypt and decrypt then "
+"response."
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:137
 msgid "Awaiting Card payment"
 msgstr ""
 
-#: includes/WC_HBL_Gateway.php:123
+#: includes/class-wc-hbl-payment-gateway.php:152
 msgid "Please Wait you have been redirected to bank payment site."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "Himalayan Bank Payment Gateway for Woocommerce"
+#: includes/class-wc-hbl-payment-gateway.php:220
+msgid "Amount Field Was Empty"
 msgstr ""
 
-#. Author URI of the plugin/theme
-msgid "https://github.com/lijnam/wc_hbl_payment_gateway"
+#: includes/class-wc-hbl-payment-gateway.php:244
+msgid "Currency was empty"
+msgstr ""
+
+#: includes/class-wc-hbl-payment-gateway.php:269
+msgid "Value Field Was Empty"
+msgstr ""
+
+#: templates/canceled.php:140
+msgid "Canceled !"
+msgstr ""
+
+#: templates/canceled.php:141
+msgid ""
+"We are so sorry to see that you have canceled the payment. Please do let us "
+"know if we could help you change your decision."
+msgstr ""
+
+#: templates/canceled.php:148 templates/declined.php:143
+msgid "Please save this number so that we can verify it later."
+msgstr ""
+
+#: templates/canceled.php:152
+msgid "Back to home"
+msgstr ""
+
+#: templates/declined.php:139
+msgid "Declined !"
+msgstr ""
+
+#: templates/declined.php:140
+msgid "Sorry the payment was declined. Please try again later."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Himalayan Bank Payment For WooCommerce"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -67,4 +153,8 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Manjil"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/lijnam/"
 msgstr ""
