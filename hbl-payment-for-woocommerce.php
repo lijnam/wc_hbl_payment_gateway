@@ -4,7 +4,7 @@
  * Description: Payment Gateway for Himalayan Bank.
  * Author: Manjil
  * Author URI: https://github.com/lijnam/
- * Version: 1.0.1
+ * Version: 1.0.2
  * Text Domain: hbl-payment-for-woocommerce
  * Domain Path: /languages/
  *
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_FILE', __FILE__ );
 define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH', __DIR__ );
-define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_VERSION', '1.0.1' );
+define( 'HBL_PAYMENT_FOR_WOOCOMMERCE_VERSION', '1.0.2' );
 
 require_once __DIR__ . '/src/Plugin.php';
 
