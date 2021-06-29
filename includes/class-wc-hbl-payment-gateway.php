@@ -230,18 +230,10 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 	public function currency_to_code_convertor( $currency = '' ) {
 
 		if ( ! empty( $currency ) ) {
-			switch ( strtoupper( $currency ) ) {
-				case 'USD':
-					return 840;
-				break; //phpcs:ignore Squiz.PHP.NonExecutableCode.Unreachable
-
-				default:
-					return 524;
-				break; //phpcs:ignore Squiz.PHP.NonExecutableCode.Unreachable
-			}
+			$code = 'USD' === strtoupper( $currency ) ? 850 : 524;
 		}
 
-		return esc_html__( 'Currency was empty', 'hbl-payment-for-woocommerce' );
+		return isset( $code ) ? $code :  esc_html__( 'Currency was empty', 'hbl-payment-for-woocommerce' );
 	}
 
 	/**
