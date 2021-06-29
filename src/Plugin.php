@@ -213,16 +213,7 @@ final class Plugin {
 	 * @return string Template Path.
 	 */
 	public function redirect_html_to_plugin_page( $template ) {
-		global $wp;
 
-		if ( isset( $_REQUEST['Status'] ) && 'VO' === $_REQUEST['Status'] ) { //phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . '/templates/canceled.php';
-			return $new_template;
-		} else {
-			$new_template = HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . '/templates/declined.php';
-			return $new_template;
-		}
-
-		return $template;
+	  return isset( $_REQUEST['Status'] ) && 'VO' === $_REQUEST['Status'] ? HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . '/templates/canceled.php' : HBL_PAYMENT_FOR_WOOCOMMERCE_PLUGIN_PATH . '/templates/declined.php'; //phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	}
 }
