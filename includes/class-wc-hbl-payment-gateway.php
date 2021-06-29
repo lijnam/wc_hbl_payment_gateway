@@ -53,7 +53,7 @@ class WC_HBL_Gateway extends WC_Payment_Gateway {
 				'title'   => esc_html__( 'Enable', 'hbl-payment-for-woocommerce' ),
 				'type'    => 'checkbox',
 				'label'   => esc_html__( 'Enable Himalayan Bank Payment', 'hbl-payment-for-woocommerce' ),
-				'default' => 'yes',
+				'default' => 'no',
 			),
 
 			'title'           => array(
