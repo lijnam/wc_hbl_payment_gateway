@@ -8,7 +8,7 @@
             "email": "mshrst16@gmail.com"
         }
     ],
-    "require": {
+    "require-dev": {
         "wp-coding-standards/wpcs": "^2.3"
     }
 }
