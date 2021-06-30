@@ -18,6 +18,8 @@ Accept the Himalayan Bank payment from your store.
 
 [Himalayan Bank Limited](https://www.himalayanbank.com/) is one of the largest private banks of Nepal. If you do not know about the Himalayan Bank, you probably do not need this plugin.
 
+You can follow the [documentation](https://sanjeebaryal.com.np/accept-himalayan-bank-payment-from-your-woocommerce-site/) and see live demo on [Woolmandu](https://woolmandu.com/).
+
 The plugin is developed without any incentive from the Himlayan Bank or WooCommerce.
 
 Contributions of any kind are welcome! Visit our [GitHub repository](https://github.com/lijnam/wc_hbl_payment_gateway).
