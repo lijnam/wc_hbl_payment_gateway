@@ -1,4 +1,4 @@
-# Himalayan Bank Payment Gateway Plugin for WooCommerce
+# Himalayan Woo
 
 You can now accept Himalyan Bank payment on your store. 💥
 
