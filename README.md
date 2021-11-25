@@ -1,4 +1,4 @@
-# Himalayan Woo
+# Add Himalayan Bank Payment In WooCommerce
 
 You can now accept Himalyan Bank payment on your store. 💥
 

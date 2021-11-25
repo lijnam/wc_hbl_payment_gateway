@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Himalayan Woo
+ * Plugin Name: Add Himalayan Bank Payment In WooCommerce
  * Description: Payment Gateway for Himalayan Bank.
  * Author: Manjil
  * Author URI: https://github.com/lijnam/

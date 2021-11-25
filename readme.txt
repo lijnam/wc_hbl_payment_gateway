@@ -1,4 +1,4 @@
-=== Himalayan Woo ===
+=== Add Himalayan Bank Payment In WooCommerce ===
 Contributors: sanzeeb3, lijnam
 Tags: hbl-payment, woocommerce
 Requires at least: 4.9
